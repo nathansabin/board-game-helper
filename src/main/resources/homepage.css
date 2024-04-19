@@ -1,0 +1,11 @@
+.header-btn {
+    -fx-background-color: black;
+    -fx-border-color: white;
+    -fx-font-color: white;
+}
+
+.header-bg {
+       -fx-fill: red;
+       -fx-width: 100%;
+       -fx-height: 100%;
+}

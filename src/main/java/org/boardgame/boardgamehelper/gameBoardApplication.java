@@ -12,16 +12,10 @@ import java.io.IOException;
 public class gameBoardApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(gameBoardApplication.class.getResource("hello-view.fxml"));
-//
-//        Scene scene = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(gameBoardApplication.class.getResource("homepage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
 
-        grid map = new grid( 10, 10, "");
-        Group page = new Group();
-        page.getChildren().add(map.getGrid());
-
-        Scene scene = new Scene(page);
-        scene.getStylesheets().add("/board.css");
+        scene.getStylesheets().add("/homepage.css");
         stage.setTitle("Game helper");
         stage.setScene(scene);
         stage.show();

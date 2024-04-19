@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Group>
+         <children>
+            <Rectangle fx:id="header" height="45.0" stroke="BLACK" strokeType="INSIDE" styleClass="header-bg" width="600.0" />
+            <Button fx:id="print" alignment="BASELINE_RIGHT" layoutX="538.0" layoutY="4.0" mnemonicParsing="false" styleClass="header-btn" text="Print" textAlignment="CENTER" />
+            <Text fill="WHITE" layoutX="33.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board game helper">
+               <font>
+                  <Font name="Gadugi" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+
+<!--      <Rectangle fill="#dce5ec" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />-->
+<!--      <ButtonBar>-->
+<!--        <buttons>-->
+<!--            <Button mnemonicParsing="false" text="New asset" />-->
+<!--            <Button mnemonicParsing="false" text="New asset Group" />-->
+<!--          <Button mnemonicParsing="false" text="view assets" />-->
+<!--        </buttons>-->
+<!--      </ButtonBar>-->
+
+<!--      <Group>-->
+<!--         <children>-->
+<!--            <Text strokeType="OUTSIDE"  text="Once launched you can invite others, with the give url edit configuration and act as admin." wrappingWidth="522.9367065429688" />-->
+<!--            <Button mnemonicParsing="false" text="Launch game" />-->
+<!--            <Button mnemonicParsing="false" text="Join game" />-->
+<!--         </children>-->
+<!--      </Group>-->
+   </children>
+</Pane>
