@@ -1,11 +1,29 @@
-.header-btn {
-    -fx-background-color: black;
-    -fx-border-color: white;
-    -fx-font-color: white;
+.headerBox {
+    -fx-fill: #850101;
+
 }
 
-.header-bg {
-       -fx-fill: red;
-       -fx-width: 100%;
-       -fx-height: 100%;
+.buttonCon {
+    -fx-padding: 0 2px;
+}
+
+.headerButton {
+     -fx-margin-top: 2px;
+     -fx-border-color: white;
+     -fx-background-color: #a75656;
+     -fx-text-fill: white;
+
+}
+
+.box {
+    -fx-fill: red;
+    -fx-height: 1000;
+    -fx-min-height: 0;
+    -fx-max-height: 10000.0000;
+}
+
+.header-text {
+    -fx-fill: white;
+    -fx-font-family: sans;
+    -fx-font-size: 28;
 }
