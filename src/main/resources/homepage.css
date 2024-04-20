@@ -1,6 +1,5 @@
 .headerBox {
     -fx-fill: #850101;
-
 }
 
 .buttonCon {
@@ -26,4 +25,33 @@
     -fx-fill: white;
     -fx-font-family: sans;
     -fx-font-size: 28;
+}
+
+.menu-box {
+    -fx-fill: #a0a0a0;
+    -fx-padding: 10px 0 0 8px;
+    -fx-spacing: 7px;
+
+}
+
+.menu-header {
+    -fx-fill: white;
+    -fx-font-size: 18px;
+}
+
+.menu-button {
+    -fx-background-color: white;
+    -fx-border-color: #850101;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0;
+    -fx-effect: null;
+    -fx-text-fill: #850101;
+    -fx-padding: 8px;
+    -fx-width: 50px;
+    -fx-height: 15px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #a0a0a0;
+    -fx-text-fill: red;
 }

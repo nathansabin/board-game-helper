@@ -2,10 +2,8 @@ package org.boardgame.boardgamehelper;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.boardgame.boardgamehelper.GUI.*;
 
 import java.io.IOException;
 

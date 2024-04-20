@@ -9,20 +9,20 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <Pane fx:id="headerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.homepageController">
-   <Rectangle fx:id="headerBox" arcHeight="5.0" arcWidth="5.0" fill="black" height="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="headerBox" width="607.0" />
+   <Rectangle fx:id="headerBox" arcHeight="5.0" arcWidth="5.0" fill="black" height="32" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="headerBox" width="607.0" />
    <Group>
       <children>
-         <Rectangle fx:id="menuBox" arcHeight="5.0" arcWidth="5.0" fill="#c3c9cf" height="374.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="189.0" />
-         <VBox layoutY="60.0" prefHeight="339.0" prefWidth="176.0">
+         <Rectangle fx:id="menuBox"  arcHeight="5.0" arcWidth="5.0" fill="#c3c9cf" height="374.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="189.0" />
+         <VBox styleClass="menu-box" layoutY="60.0" prefHeight="339.0" prefWidth="176.0">
             <children>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Assets" />
-               <Button mnemonicParsing="false" text="View all" />
-               <Button mnemonicParsing="false" text="Add map" />
-               <Button mnemonicParsing="false" text="Add Token" />
-               <Button mnemonicParsing="false" text="Add Sheet" />
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Play" />
-               <Button mnemonicParsing="false" text="launch" />
-               <Button mnemonicParsing="false" text="Join" />
+               <Text styleClass="menu-header" strokeType="OUTSIDE" strokeWidth="0.0" text="Assets" />
+               <Button styleClass="menu-button" mnemonicParsing="false" text="View all" />
+               <Button styleClass="menu-button" mnemonicParsing="false" text="Add map" />
+               <Button styleClass="menu-button" mnemonicParsing="false" text="Add Token" />
+               <Button styleClass="menu-button" mnemonicParsing="false" text="Add Sheet" />
+               <Text styleClass="menu-header" strokeType="OUTSIDE" strokeWidth="0.0" text="Play" />
+               <Button styleClass="menu-button" mnemonicParsing="false" text="launch" />
+               <Button styleClass="menu-button" mnemonicParsing="false" text="Join" />
             </children>
          </VBox>
       </children>
