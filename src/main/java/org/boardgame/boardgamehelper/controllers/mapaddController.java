@@ -1,16 +1,12 @@
 package org.boardgame.boardgamehelper.controllers;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,14 +16,16 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
 import java.io.File;
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class mapaddController {
     private Stage stage;
+    private File newMap;
     @FXML
     private AnchorPane root;
     @FXML
@@ -84,10 +82,22 @@ public class mapaddController {
         fileChooser.setTitle("Choose map image");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
 
-        File file = fileChooser.showOpenDialog(stage);
-        if (file != null) {
-            Image image = new Image(file.toURI().toString());
+        newMap = fileChooser.showOpenDialog(stage);
+        if (newMap != null) {
+            Image image = new Image(newMap.toURI().toString());
             imageBox.setImage(image);
+        }
+    }
+
+    @FXML
+    public void saveImage(MouseEvent e) {
+        try {
+            if (imageBox.getImage() != null) {
+                newMap = new File("src/main/resources/maps/" + imageBox.getImage() + ".png");
+                ImageIO.write(SwingFXUtils.fromFXImage(imageBox.getImage(), null), "png", newMap);
+            }
+        } catch (IOException err) {
+            err.printStackTrace();
         }
     }
 }
