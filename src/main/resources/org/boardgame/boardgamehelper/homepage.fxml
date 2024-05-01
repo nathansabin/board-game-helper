@@ -17,12 +17,12 @@
          <VBox layoutY="60.0" prefHeight="339.0" prefWidth="176.0" styleClass="menu-box">
             <children>
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-header" text="Assets" />
-               <Button fx:id="addButton" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="View all" />
-               <Button mnemonicParsing="false" styleClass="menu-button" text="Add map" />
-               <Button mnemonicParsing="false" styleClass="menu-button" text="Add Token" />
+               <Button fx:id="viewAssets" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="View all" />
+               <Button fx:id="mapAdd" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="Add map" />
+               <Button fx:id="tokenAdd" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="Add Token" />
                <Button mnemonicParsing="false" styleClass="menu-button" text="Add Sheet" />
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-header" text="Play" />
-               <Button mnemonicParsing="false" styleClass="menu-button" text="launch" />
+               <Button  mnemonicParsing="false" styleClass="menu-button" text="launch" />
                <Button mnemonicParsing="false" styleClass="menu-button" text="Join" />
             </children>
          </VBox>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="/homepage.css, /fileadder.css " xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.tokenaddController">
+    <children>
+        <Pane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#B0B0B0" height="341.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="324.0" />
+                <Group>
+                    <Rectangle fx:id="headerBox" arcHeight="5.0" arcWidth="5.0" fill="black" height="32" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="headerBox" width="607.0" />
+                    <AnchorPane layoutX="400.0" prefHeight="41.0" prefWidth="200.0" styleClass="buttonCon">
+                        <children>
+                            <Button fx:id="homeButton" mnemonicParsing="false" onMouseClicked="#pageHandler" styleClass="headerButton" text="Home" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                        </children>
+                    </AnchorPane>
+                    <Text layoutX="58.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board Game Helper" />
+                </Group>
+                <Text layoutX="144.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-header" text="Token Creator" wrappingWidth="153.33673095703125" />
+                <VBox fx:id="imageSelector" alignment="CENTER" layoutX="40.0" layoutY="95.0" prefHeight="69.0" prefWidth="224.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an image to use as a token:" wrappingWidth="281.4976806640625" />
+                        <Button fx:id="fileButton" alignment="CENTER" onMouseClicked="#insertFile" styleClass="adder-button" text="Select file" />
+                    </children>
+                </VBox>
+                <VBox layoutX="112.0" layoutY="179.0" prefHeight="69.0" prefWidth="126.0" styleClass="checkbox-con">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a size" />
+                        <CheckBox fx:id="large" mnemonicParsing="false" onMouseClicked="#checkBoxState" text="Large: 3x3" />
+                        <CheckBox fx:id="medium" mnemonicParsing="false" onMouseClicked="#checkBoxState" text="Medium: 2x2" />
+                        <CheckBox fx:id="small" mnemonicParsing="false" onMouseClicked="#checkBoxState" text="small: 1x1" />
+                    </children>
+                </VBox>
+                <Button onMouseClicked="#saveImage" layoutX="155.0" layoutY="271.0" styleClass="adder-button"  mnemonicParsing="false" text="Save" />
+                <ImageView fx:id="imageBox" fitHeight="171.0" fitWidth="200" layoutX="363.0" layoutY="63.0" styleClass="image" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

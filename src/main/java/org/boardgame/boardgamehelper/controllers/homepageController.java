@@ -18,7 +18,11 @@ public class homepageController {
     @FXML
     private Rectangle menuBox;
     @FXML
-    private Button addButton;
+    private Button mapAdd;
+    @FXML
+    private Button tokenAdd;
+    @FXML
+    private Button viewAssets;
 
     public void initialize() {
         headerBox.widthProperty().bind(headerRoot.widthProperty());
@@ -29,14 +33,23 @@ public class homepageController {
     public void setScene(MouseEvent e) throws Exception{
         Stage stage;
         Parent root;
+        try {
+            if (e.getSource() == mapAdd) {
+                stage = (Stage) mapAdd.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("/org/boardgame/boardgamehelper/mapadd.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else if (e.getSource() == tokenAdd) {
+                stage = (Stage) mapAdd.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("/org/boardgame/boardgamehelper/tokenadd.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
 
-        if (e.getSource() == addButton) {
-            stage = (Stage) addButton.getScene().getWindow();
-
-            root = FXMLLoader.load(getClass().getResource("/org/boardgame/boardgamehelper/mapadd.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        } catch (Exception err) {
+            err.printStackTrace();
         }
     }
 }
