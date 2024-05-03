@@ -8,13 +8,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.io.File;
+import java.io.IOException;
+
 
 public class grid {
 
     private Image background;
     private GridPane grid;
     private static Group map;
-    public grid (Integer width, Integer height, String image) {
+
+    public grid (Integer width, Integer height, String image) throws IOException {
         map = new Group();
         ScrollPane scroll = new ScrollPane();
         grid = new GridPane();
@@ -29,8 +33,8 @@ public class grid {
         }
 
         if (image != "") {
-            background = new Image(image);
-            //TODO come back to add image scale when image import works
+            File file = new File(image);
+//            background = SwingFXUtils.toFXImage(ImageIO.read(file));
             ImageView view = new ImageView();
             view.setImage(background);
             view.setStyle("-fx-position: absolute; -fx-top: 0; -fx-left: 0;");

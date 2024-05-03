@@ -46,6 +46,12 @@ public class homepageController {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+            } else if (e.getSource() == viewAssets) {
+                stage = (Stage) mapAdd.getScene().getWindow();
+                root = FXMLLoader.load(getClass().getResource("/org/boardgame/boardgamehelper/view.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
 
         } catch (Exception err) {
