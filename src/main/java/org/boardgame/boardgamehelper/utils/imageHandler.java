@@ -1,10 +1,11 @@
 package org.boardgame.boardgamehelper.utils;
 
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -40,18 +41,23 @@ public class imageHandler {
         return imageFiles;
     }
 
-    public Group convertImage(File[] imgFolder) throws IOException {
+    public VBox convertImage(File[] imgFolder, String title) throws IOException {
         Image img;
         ImageView imageV;
-        Group gro = new Group();
+        Text displayTitle = new Text(title);
+        VBox gro = new VBox(3);
+
+        displayTitle.getStyleClass().add("title");
+        gro.getChildren().add(displayTitle);
 
         for (int i=0; i<imgFolder.length; i++) {
             imageV = new ImageView();
             img = SwingFXUtils.toFXImage(ImageIO.read(imgFolder[i]), null);
 
             imageV.setImage(img);
+            imageV.getStyleClass().add("image-v");
+
             gro.getChildren().add((Node) imageV);
-            System.out.println(i);
         }
         if (gro.getChildren().size() < 0) {
             return null;

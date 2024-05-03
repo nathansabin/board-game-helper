@@ -2,13 +2,14 @@ package org.boardgame.boardgamehelper.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.utils.imageHandler;
@@ -23,6 +24,10 @@ public class viewController {
     private Rectangle headerBox;
     @FXML
     private AnchorPane root;
+    @FXML
+    private AnchorPane body;
+    @FXML
+    private HBox Hbody;
 
     private File[] localTokens;
     private File[] localMaps;
@@ -40,15 +45,15 @@ public class viewController {
         }
 
         if (this.localMaps.length > 0) {
-            System.out.println("worked");
-            Group gro = imgHandler.convertImage(this.localMaps);
-            root.getChildren().add((Node) gro);
-            System.out.println(gro);
+            VBox gro = imgHandler.convertImage(this.localMaps, "Local Maps");
+            Hbody.getChildren().add((Node) gro);
+
+
         }
         if (this.localTokens.length > 0) {
-            System.out.println("TOKENS as WELL!??!?");
+            VBox gro = imgHandler.convertImage(this.localMaps, "Local Tokens");
+            Hbody.getChildren().add((Node) gro);
         }
-
     }
 
     @FXML

@@ -1,0 +1,18 @@
+.title {
+    -fx-font-size: 36px;
+    -fx-fill: white;
+}
+
+.image-v {
+    -fx-height: 45px;
+    -fx-width: auto;
+}
+
+ScrollPane {
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+}
+
+.file-button {
+    -fx-margin: 10px;
+}
