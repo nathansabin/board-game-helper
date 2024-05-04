@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.launchController">
+   <children>
+      <HBox layoutX="-1.0" layoutY="67.0" prefHeight="335.0" />
+      <Button layoutX="14.0" layoutY="161.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="159.0" text="New" />
+      <Button layoutX="426.0" layoutY="161.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="159.0" text="Saved" />
+      <Line endX="-99.99998474121094" endY="203.20001220703125" layoutX="400.0" layoutY="119.0" startX="-100.0" />
+      <Text layoutX="199.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose previously saved game or create a new game!" textAlignment="CENTER" wrappingWidth="200.0" />
+   </children>
+</AnchorPane>

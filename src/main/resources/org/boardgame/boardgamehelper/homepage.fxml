@@ -22,7 +22,7 @@
                <Button fx:id="tokenAdd" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="Add Token" />
                <Button mnemonicParsing="false" styleClass="menu-button" text="Add Sheet" />
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-header" text="Play" />
-               <Button  mnemonicParsing="false" styleClass="menu-button" text="launch" />
+               <Button fx:id="launch" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="launch" />
                <Button mnemonicParsing="false" styleClass="menu-button" text="Join" />
             </children>
          </VBox>
