@@ -1,10 +1,8 @@
 package org.boardgame.boardgamehelper.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.utils.imageHandler;
+import org.boardgame.boardgamehelper.utils.pageManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +27,8 @@ public class viewController {
     private AnchorPane body;
     @FXML
     private HBox Hbody;
+
+    private pageManager pageM;
 
     private File[] localTokens;
     private File[] localMaps;
@@ -63,10 +64,7 @@ public class viewController {
 
     if (e.getSource() == homeButton) {
         stage = (Stage) homeButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/org/boardgame/boardgamehelper/homepage.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        pageM.changeScene("homepage.fxml", stage);
     }
 }
 }

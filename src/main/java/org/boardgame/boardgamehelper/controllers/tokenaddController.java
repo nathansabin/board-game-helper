@@ -2,9 +2,7 @@ package org.boardgame.boardgamehelper.controllers;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
@@ -15,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.boardgame.boardgamehelper.utils.pageManager;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -45,6 +44,7 @@ public class tokenaddController {
     @FXML
     private CheckBox small;
 
+    private pageManager pageM;
 
     public void initialize() {
         headerBox.widthProperty().bind(root.widthProperty());
@@ -57,10 +57,7 @@ public class tokenaddController {
 
         if (e.getSource() == homeButton) {
             stage = (Stage) homeButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/org/boardgame/boardgamehelper/homepage.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            pageM.changeScene("homepage.fxml", stage);
         }
     }
     @FXML

@@ -1,0 +1,35 @@
+Button {
+    -fx-background-color: white;
+    -fx-border-color: #850101;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0;
+    -fx-effect: null;
+    -fx-text-fill: #850101;
+    -fx-padding: 8px;
+    -fx-width: 80px;
+    -fx-height: 15px;
+}
+
+Button:hover {
+    -fx-background-color: #a0a0a0;
+    -fx-text-fill: red;
+}
+
+Line {
+    -fx-stroke: white;
+}
+
+
+AnchorPane {
+    -fx-background: #a7a7a7;
+}
+
+.header {
+    -fx-font-size: 24px;
+    -fx-fill: #efefef;
+    -fx-margin: 10px;
+}
+.caption {
+    -fx-font-size: 16px;
+    -fx-fill: #850101;
+}
