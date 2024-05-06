@@ -8,7 +8,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.utils.imageHandler;
 import org.boardgame.boardgamehelper.utils.pageManager;
@@ -20,15 +19,13 @@ public class viewController {
     @FXML
     private Button homeButton;
     @FXML
-    private Rectangle headerBox;
-    @FXML
     private AnchorPane root;
     @FXML
     private AnchorPane body;
     @FXML
     private HBox Hbody;
 
-    private pageManager pageM;
+    private pageManager pageM = new pageManager();
 
     private File[] localTokens;
     private File[] localMaps;
@@ -36,7 +33,6 @@ public class viewController {
     private imageHandler imgHandler = new imageHandler();
 
     public void initialize() throws IOException {
-        headerBox.widthProperty().bind(root.widthProperty());
 
         try {
             this.localMaps = imgHandler.pullLocalImages("maps/");

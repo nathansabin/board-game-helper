@@ -55,3 +55,9 @@
     -fx-background-color: #a0a0a0;
     -fx-text-fill: red;
 }
+
+.header-con {
+    -fx-gap: 25px;
+    -fx-fill: red;
+    -fx-background-color: #555555;
+}

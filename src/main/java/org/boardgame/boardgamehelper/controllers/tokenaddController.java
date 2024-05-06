@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.utils.pageManager;
@@ -28,8 +27,6 @@ public class tokenaddController {
     @FXML
     private AnchorPane root;
     @FXML
-    private Rectangle headerBox;
-    @FXML
     private VBox imageSelector;
     @FXML
     private Button fileButton;
@@ -44,10 +41,10 @@ public class tokenaddController {
     @FXML
     private CheckBox small;
 
-    private pageManager pageM;
+    private pageManager pageM = new pageManager();
 
     public void initialize() {
-        headerBox.widthProperty().bind(root.widthProperty());
+
     }
 
     @FXML

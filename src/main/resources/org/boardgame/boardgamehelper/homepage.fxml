@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
-
-<?import javafx.scene.layout.AnchorPane?>
 <Pane fx:id="headerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.homepageController">
    <Rectangle fx:id="headerBox" arcHeight="5.0" arcWidth="5.0" fill="black" height="32" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="headerBox" width="607.0" />
    <Group>
@@ -29,11 +27,13 @@
       </children>
    </Group>
    <children>
-      <AnchorPane layoutX="400.0" prefHeight="41.0" prefWidth="200.0" styleClass="buttonCon">
-         <children>
-            <Button mnemonicParsing="false" styleClass="headerButton" text="print" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
-         </children>
-      </AnchorPane>
-      <Text layoutX="58.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board Game Helper" />
+      <Group VBox.vgrow="ALWAYS">
+         <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="4000.0" spacing="40.0" styleClass="header-con">
+            <children>
+               <Text layoutX="58.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board Game Helper" />
+               <Button fx:id="homeButton" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="headerButton" text="Home" />
+            </children>
+         </HBox>
+      </Group>
    </children>
 </Pane>

@@ -33,8 +33,7 @@ public class homepageController {
 
     @FXML
     public void setScene(MouseEvent e) throws Exception{
-        Stage stage;
-        stage = (Stage) mapAdd.getScene().getWindow();
+        Stage stage = (Stage) mapAdd.getScene().getWindow();
         var sor = e.getSource();
 
         try {

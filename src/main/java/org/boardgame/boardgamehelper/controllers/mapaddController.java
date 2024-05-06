@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.utils.pageManager;
@@ -26,8 +25,6 @@ public class mapaddController {
     private File newMap;
     @FXML
     private AnchorPane root;
-    @FXML
-    private Rectangle headerBox;
     @FXML
     private VBox imageSelector;
     @FXML
@@ -46,7 +43,6 @@ public class mapaddController {
     private pageManager pageM = new pageManager();
 
     public void initialize() {
-        headerBox.widthProperty().bind(root.widthProperty());
     }
 
     @FXML

@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="/view.css, /homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.viewController">
+<AnchorPane fx:id="root" minWidth="400.0" prefHeight="400.0" prefWidth="600.0" stylesheets="/view.css, /homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.viewController">
    <ScrollPane prefHeight="493.0" prefWidth="647.0">
       <content>
        <AnchorPane fx:id="body" minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="648.0">
@@ -19,14 +20,13 @@
          </AnchorPane>
       </content>
    </ScrollPane>
-    <Group>
-        <Rectangle fx:id="headerBox" arcHeight="5.0" arcWidth="5.0" fill="black" height="32" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="headerBox" width="607.0" />
-        <AnchorPane layoutX="400.0" prefHeight="41.0" prefWidth="200.0" styleClass="buttonCon">
+    <Group VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="4000.0" spacing="40.0" styleClass="header-con">
             <children>
-                <Button fx:id="homeButton" mnemonicParsing="false" onMouseClicked="#pageHandler" styleClass="headerButton" text="Home" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                <Text layoutX="58.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board Game Helper" />
+                <Button fx:id="homeButton" mnemonicParsing="false" onMouseClicked="#pageHandler" styleClass="headerButton" text="Home" />
             </children>
-        </AnchorPane>
-        <Text layoutX="58.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board Game Helper" />
+        </HBox>
     </Group>
 
 </AnchorPane>
