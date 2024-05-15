@@ -9,6 +9,6 @@ public class mapController {
     private GridPane map;
 //    @FXML
 //    public void initialize() {
-//        grid background = new grid(24, 24, "resources/maps/" + "javafx.scene.image.Image@7c357010.png");
+//        grid background = new grid(24, 24, "resources/maps/" + "javafx");
 //    }
 }

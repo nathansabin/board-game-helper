@@ -4,7 +4,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import javax.imageio.ImageIO;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class imageHandler {
-    public File[] pullLocalImages(String path) throws IOException, URISyntaxException {
+    public static File[] pullLocalImages(String path) throws IOException, URISyntaxException {
         File dir = new File("src/main/resources/" + path);
 
 
@@ -41,14 +41,17 @@ public class imageHandler {
         return imageFiles;
     }
 
-    public VBox convertImage(File[] imgFolder, String title) throws IOException {
+    public static HBox convertImage(File[] imgFolder, String title) throws IOException {
         Image img;
         ImageView imageV;
-        Text displayTitle = new Text(title);
-        VBox gro = new VBox(3);
+        var gro = new HBox(3);
 
-        displayTitle.getStyleClass().add("title");
-        gro.getChildren().add(displayTitle);
+
+        if (title != null) {
+            Text displayTitle = new Text(title);
+            displayTitle.getStyleClass().add("title");
+            gro.getChildren().add(displayTitle);
+        }
 
         for (int i=0; i<imgFolder.length; i++) {
             imageV = new ImageView();
@@ -64,6 +67,16 @@ public class imageHandler {
         }
 
         return gro;
+    }
+
+    public static ImageView oneImage(File imgPath) throws IOException {
+        ImageView imgView = new ImageView();
+        Image img = SwingFXUtils.toFXImage(ImageIO.read(imgPath), null);
+
+        imgView.setImage(img);
+        imgView.setFitWidth(30.0);
+        imgView.setFitHeight(30.0);
+        return imgView;
     }
 
 }

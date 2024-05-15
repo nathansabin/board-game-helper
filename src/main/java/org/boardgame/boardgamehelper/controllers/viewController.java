@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.utils.imageHandler;
 import org.boardgame.boardgamehelper.utils.pageManager;
@@ -42,13 +41,13 @@ public class viewController {
         }
 
         if (this.localMaps.length > 0) {
-            VBox gro = imgHandler.convertImage(this.localMaps, "Local Maps");
+            HBox gro = imgHandler.convertImage(this.localMaps, "Local Maps");
             Hbody.getChildren().add((Node) gro);
 
 
         }
         if (this.localTokens.length > 0) {
-            VBox gro = imgHandler.convertImage(this.localMaps, "Local Tokens");
+            HBox gro = imgHandler.convertImage(this.localMaps, "Local Tokens");
             Hbody.getChildren().add((Node) gro);
         }
     }

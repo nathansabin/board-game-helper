@@ -27,13 +27,13 @@
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caption" text="Maps" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" styleClass="asset-sel" />
+                              <HBox fx:id="savedMaps" prefHeight="100.0" prefWidth="200.0" styleClass="asset-sel" />
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caption" text="Rules &amp; Player Info" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" styleClass="asset-sel" />
+                              <HBox fx:id="savedRules" prefHeight="100.0" prefWidth="200.0" styleClass="asset-sel" />
                            </children>
                         </VBox>
                      </children>
