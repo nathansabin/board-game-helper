@@ -1,0 +1,25 @@
+* {
+    -fx-margin: auto;
+    -fx-alignment: center;
+}
+
+Button {
+    -fx-alignment: center;
+    -fx-text-alignment: left;
+}
+
+.box {
+-fx-padding: 100%;
+-fx-alignment: center;
+}
+
+.nav-button {
+     -fx-color: white;
+     -fx-border-color: #850101;
+     -fx-border-width: 1px;
+     -fx-padding: 3px;
+     -fx-width: 40px;
+     -fx-height: 40px;
+ }
+
+ .image

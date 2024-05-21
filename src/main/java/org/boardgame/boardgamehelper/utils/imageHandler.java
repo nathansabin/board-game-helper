@@ -74,8 +74,9 @@ public class imageHandler {
         Image img = SwingFXUtils.toFXImage(ImageIO.read(imgPath), null);
 
         imgView.setImage(img);
-        imgView.setFitWidth(30.0);
-        imgView.setFitHeight(30.0);
+        imgView.setFitWidth(60.0);
+        imgView.setFitHeight(60.0);
+        imgView.getStyleClass().add("image");
         return imgView;
     }
 

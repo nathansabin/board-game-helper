@@ -37,4 +37,6 @@
 
 .asset-sel {
     -fx-background-color: #b7b7b7;
+    -fx-alignment: center;
+    -fx-width: auto;
 }

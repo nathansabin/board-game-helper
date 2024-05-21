@@ -16,7 +16,7 @@ public class navView {
 
 
     public HBox scrollview(File[] imgFolder) throws IOException {
-        this.mapsComponent = new HBox();
+        this.mapsComponent = new HBox(10);
         images = imgFolder;
         this.current = 0;
 
@@ -26,7 +26,8 @@ public class navView {
             mapsComponent.getChildren().add(imageHandler.oneImage(images[i]));
         }
 
-        HBox scroll = new HBox(50);
+        HBox scroll = new HBox(10);
+        scroll.getStylesheets().add("navView.css");
         Button left = new Button("< ");
         Button right = new Button(" >");
 
@@ -48,6 +49,12 @@ public class navView {
         scroll.getChildren().add(left);
         scroll.getChildren().add(mapsComponent);
         scroll.getChildren().add(right);
+
+        left.getStyleClass().add("nav-button");
+        right.getStyleClass().add("nav-button");
+        scroll.getStyleClass().add("box");
+
+        scroll.getStylesheets().add("/navView.css");
 
         return scroll;
     }
