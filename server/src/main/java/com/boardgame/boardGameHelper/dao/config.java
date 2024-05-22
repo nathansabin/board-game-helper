@@ -11,7 +11,8 @@ public class config {
     @Nullable
     public Connection getConn(){
         try {
-            conn = DriverManager.getConnection(this.connectStr);
+            System.out.println(this.connectStr);
+            this.conn = DriverManager.getConnection(this.connectStr);
             return conn;
         } catch (SQLException e) {
             System.out.println(e);
