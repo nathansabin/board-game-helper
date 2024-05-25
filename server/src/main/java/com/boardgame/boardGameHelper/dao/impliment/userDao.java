@@ -10,13 +10,14 @@ import java.sql.*;
 
 @Service
 public class userDao implements userInterface {
+    private final config connection = new config();
+    private final Connection DB = this.connection.getConn();
+
     @Override
     public user createUser(user newUser) throws SQLException {
-        config connection = new config();
-        Connection DB = connection.getConn();
 
         String query = "INSERT INTO user(username, password) VALUES(?, ?)";
-        try (PreparedStatement stmt = DB.prepareStatement(query)) {
+        try (PreparedStatement stmt = this.DB.prepareStatement(query)) {
             stmt.setString(1, newUser.getUsername());
             stmt.setString(2, newUser.getPassword());
 
@@ -26,7 +27,7 @@ public class userDao implements userInterface {
         }
 
         String selectQuery = "SELECT * FROM user WHERE username=?";
-        try (PreparedStatement stmt = DB.prepareStatement(selectQuery)){
+        try (PreparedStatement stmt = this.DB.prepareStatement(selectQuery)){
             stmt.setString(1, newUser.getUsername());
 
             ResultSet rs = stmt.executeQuery();
@@ -42,7 +43,22 @@ public class userDao implements userInterface {
         return newUser;
     }
     @Override
-    public user login(user User) {
-        return new user("kevin", "1234abcd");
+    public Boolean login(user User) {
+        String query = "SELECT * FROM user WHERE username=? OR password=?";
+        try (PreparedStatement stmt = this.DB.prepareStatement(query)){
+            stmt.setString(1, User.getUsername());
+            stmt.setString(2, User.getPassword());
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println(rs.getString("username"));
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

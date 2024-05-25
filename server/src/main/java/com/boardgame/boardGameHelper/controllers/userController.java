@@ -15,12 +15,16 @@ import java.sql.SQLException;
 public class userController {
 
     @Autowired
-    private userDao user;
+    private userDao userDB;
 
     @PostMapping("api/create")
-    public user hello(@RequestBody user newUser) throws SQLException {
-        user.createUser(newUser);
+    public user createNewUser(@RequestBody user newUser) throws SQLException {
+        userDB.createUser(newUser);
         return newUser;
     }
 
+    @PostMapping("api/login")
+    public Boolean login(@RequestBody user User) throws SQLException {
+        return  userDB.login(User);
+    }
 }
