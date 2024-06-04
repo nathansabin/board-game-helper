@@ -3,13 +3,19 @@ package com.boardgame.boardGameHelper.dao.impliment;
 import com.boardgame.boardGameHelper.dao.config;
 import com.boardgame.boardGameHelper.dao.userInterface;
 import com.boardgame.boardGameHelper.models.user;
+import com.boardgame.boardGameHelper.utils.auth.jwtUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class userDao implements userInterface {
+    @Autowired
+    private jwtUtils jwt = new jwtUtils();
     private final config connection = new config();
     private final Connection DB = this.connection.getConn();
 
@@ -43,7 +49,10 @@ public class userDao implements userInterface {
         return newUser;
     }
     @Override
-    public Boolean login(user User) {
+    public String login(user User) {
+
+        Map<String, Object> claims = new HashMap<>();
+
         String query = "SELECT * FROM user WHERE username=? OR password=?";
         try (PreparedStatement stmt = this.DB.prepareStatement(query)){
             stmt.setString(1, User.getUsername());
@@ -52,10 +61,13 @@ public class userDao implements userInterface {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                System.out.println(rs.getString("username"));
-                return true;
+                claims.put("username", rs.getString("username"));
+                claims.put("password", rs.getString("password"));
+                claims.put("id", rs.getInt("id"));
+
+                return jwt.generateToken(claims);
             } else {
-                return false;
+                return null;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

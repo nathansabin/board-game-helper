@@ -3,10 +3,7 @@ package com.boardgame.boardGameHelper.controllers;
 import com.boardgame.boardGameHelper.dao.impliment.userDao;
 import com.boardgame.boardGameHelper.models.user;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,7 +21,8 @@ public class userController {
     }
 
     @PostMapping("api/login")
-    public Boolean login(@RequestBody user User) throws SQLException {
-        return  userDB.login(User);
+    public String login(@RequestBody user User) throws SQLException {
+        return userDB.login(User);
     }
+    
 }

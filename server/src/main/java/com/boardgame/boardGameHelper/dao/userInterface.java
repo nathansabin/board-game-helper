@@ -8,5 +8,5 @@ import java.sql.SQLException;
 @Repository
 public interface userInterface {
     public user createUser(user newUser) throws SQLException;
-    public Boolean login(user User);
+    public String login(user User);
 }
