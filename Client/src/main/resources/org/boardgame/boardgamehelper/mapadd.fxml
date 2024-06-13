@@ -34,7 +34,8 @@
                   <CheckBox fx:id="small" mnemonicParsing="false" onMouseClicked="#checkBoxState" text="small: 6 x 8" />
                </children>
             </VBox>
-            <Button onMouseClicked="#saveImage" layoutX="155.0" layoutY="271.0" styleClass="adder-button"  mnemonicParsing="false" text="Save" />
+            <Button onMouseClicked="#saveImage" layoutX="155.0" layoutY="271.0" styleClass="adder-button"  mnemonicParsing="false" text="local Save" />
+            <Button onMouseClicked="#saveImageServer" layoutX="155.0" layoutY="271.0" styleClass="adder-button"  mnemonicParsing="false" text="cloud Save" />
             <ImageView fx:id="imageBox" fitHeight="171.0" fitWidth="200" layoutX="363.0" layoutY="63.0" styleClass="image" />
          </children>
       </Pane>

@@ -1,12 +1,15 @@
 package com.boardgame.boardGameHelper.utils.auth;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,33 +18,44 @@ import java.util.function.Function;
 @Component
 public class jwtUtils {
 
-    private String secret = "AV12JJKSD3FDS41DF453SLKFJKLSDLK341234SF23";
-
-    public String extractUsername(String token) {
-        return extractClaim(token, Claims::getSubject);
-    }
+    private String secret = "AV12JJKSD3FDS41DF453SLKFJKLSDSDFFSDFWEWQEQW412341234LK341234SF23";
 
     public Date extractExpiration(String token) {
-        return extractClaim(token, Claims::getExpiration);
+        var claims = extractAllClaims(token);
+        return claims.getExpiration();
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractAllClaims(token);
-        return claimsResolver.apply(claims);
+    public Integer extractId(String token) {
+        try {
+            final var claims = extractAllClaims(token);
+            return claims.get("id", Integer.class);
+        } catch (Exception e) {
+            System.out.println("Error extracting id: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public String extractClaim(String token, String claim) {
+        try {
+            final var claims = extractAllClaims(token);
+            return claims.get(claim, String.class);
+        } catch (Exception e) {
+            System.out.println("Error extracting claim: " + e.getMessage());
+            return null;
+        }
     }
 
     private Claims extractAllClaims(String token) {
-        Claims claims;
         try {
-            claims = Jwts.parser()
-                    .setSigningKey(secret)
+            return Jwts.parserBuilder()
+                    .setSigningKey(Keys.hmacShaKeyFor(Base64.getDecoder().decode(secret)))
+                    .build()
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            System.out.println("Could not get all claims Token from passed token");
-            claims = null;
+            System.out.println("Error extracting all claims: " + e.getMessage());
+            return null;
         }
-        return claims;
     }
 
     private Boolean isTokenExpired(String token) {
@@ -65,7 +79,7 @@ public class jwtUtils {
                     .setClaims(claims)
                     .setIssuedAt(now)
                     .setExpiration(expireDate)
-                    .signWith(SignatureAlgorithm.HS256, secretKeyBytes)
+                    .signWith(Keys.hmacShaKeyFor(Base64.getDecoder().decode(secret)))
                     .compact();
 
             return compactJws;
@@ -75,7 +89,7 @@ public class jwtUtils {
         }
     }
     public Boolean validateToken(String token, String username) {
-        final String extractedUsername = extractUsername(token);
+        final String extractedUsername = extractClaim(token, username);
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
 }

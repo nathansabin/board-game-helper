@@ -1,15 +1,19 @@
 package com.boardgame.boardGameHelper.models;
 
+import io.jsonwebtoken.lang.Maps;
+
 import java.awt.*;
 import java.util.Arrays;
 
 public class images {
     private String username;
-    private Image[] Maps;
-    private Image[] Tokens;
+    private String[] Maps;
+    private String[] Tokens;
 
-    public images(String username) {
+    public images(String username, String[] maps, String[] tokens) {
         this.username = username;
+        this.Maps = maps;
+        this.Tokens = tokens;
     }
     public images() {}
 
@@ -19,18 +23,18 @@ public class images {
     public void setUsername(String username) {
         this.username = username;
     }
-    public Image[] getMaps() {
+    public String[] getMaps() {
         return this.Maps;
     }
-    public void setMaps(Image[] maps) {
+    public void setMaps(String[] maps) {
         this.Maps = maps;
     }
 
-    public Image[] getTokens() {
+    public String[] getTokens() {
         return this.Tokens;
     }
 
-    public void setTokens(Image[] tokens) {
+    public void setTokens(String[] tokens) {
         this.Tokens = tokens;
     }
 
