@@ -1,0 +1,40 @@
+.header-con {
+    -fx-background-color: #555555;
+    -fx-padding: 10px;
+}
+
+.header-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.headerButton {
+    -fx-font-size: 16px;
+    -fx-padding: 5px 10px;
+}
+
+.form-container {
+    -fx-spacing: 20px;
+    -fx-alignment: center;
+}
+
+.form-box {
+    -fx-background-color: rgba(255, 0, 0, 0.2);
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+.form-input .form-text {
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+.form-buttons {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+.menu-button {
+    -fx-padding: 10px 20px;
+}

@@ -12,13 +12,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.boardgame.boardgamehelper.utils.apiHandler;
 import org.boardgame.boardgamehelper.utils.pageManager;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 public class tokenaddController {
@@ -89,6 +93,23 @@ public class tokenaddController {
             if (imageBox.getImage() != null) {
                 newMap = new File("src/main/resources/tokens/" + imageBox.getImage() + ".png");
                 ImageIO.write(SwingFXUtils.fromFXImage(imageBox.getImage(), null), "png", newMap);
+            }
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void saveImageServer(MouseEvent e) {
+        try {
+            if (imageBox.getImage() != null) {
+                BufferedImage imageBuffered = SwingFXUtils.fromFXImage(imageBox.getImage(), null);
+                ByteArrayOutputStream bao = new ByteArrayOutputStream();
+                ImageIO.write(imageBuffered, "png", bao);
+                byte[] bytes = bao.toByteArray();
+
+                String base64Image = Base64.getEncoder().encodeToString(bytes);
+                boolean worked = apiHandler.sendUserImage(base64Image, "eyJhbGciOiJIUzM4NCJ9.eyJwYXNzd29yZCI6ImZha2VwYXNzd29yZCIsImlkIjo4LCJ1c2VybmFtZSI6Im5vdGhlcmUiLCJpYXQiOjE3MTg0ODE2OTMsImV4cCI6MTcxODUxNzY5M30.Kl5KfahJRqCPPFGo2V4HeuJ2YOCS1LzbHmag1AkXzOx9J1KPpk2JscFNYJuQby4G");
             }
         } catch (IOException err) {
             err.printStackTrace();

@@ -40,9 +40,20 @@ public class imageController {
     }
 
     @PostMapping("/api/images/token")
-    public static String addNewToken(@RequestBody images requestBody) {
+    public ResponseEntity<Boolean> addNewToken(@RequestBody imageRes res) {
+        String token = res.getImage();
+        String user = res.getToken();
 
-        return "this will add a new token";
+        if (token == null || user == null) {
+            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            boolean added = imageDB.addImage(user, token, "token");
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/api/image/token/remove")
@@ -71,7 +82,7 @@ public class imageController {
         }
 
         try {
-            boolean added = imageDB.addMap(user, map);
+            boolean added = imageDB.addImage(user, map, "map");
             return new ResponseEntity<>(true, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);

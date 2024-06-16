@@ -106,7 +106,6 @@ public class mapaddController {
 
                 String base64Image = Base64.getEncoder().encodeToString(bytes);
                 boolean worked = apiHandler.sendUserImage(base64Image, "eyJhbGciOiJIUzM4NCJ9.eyJwYXNzd29yZCI6ImZha2VwYXNzd29yZCIsImlkIjo4LCJ1c2VybmFtZSI6Im5vdGhlcmUiLCJpYXQiOjE3MTgyNTIyNjAsImV4cCI6MTcxODI4ODI2MH0.hI2WqTC3omTpmCcKcCUiq11R00U1gOIah1ygD6mqxClIQhDHduGHUxznO39zOkcM");
-                System.out.println(worked);
             }
         } catch (IOException err) {
             err.printStackTrace();

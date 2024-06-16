@@ -7,6 +7,6 @@ import java.sql.SQLException;
 
 @Repository
 public interface userInterface {
-    public user createUser(user newUser) throws SQLException;
+    public String createUser(user newUser) throws SQLException;
     public String login(user User);
 }

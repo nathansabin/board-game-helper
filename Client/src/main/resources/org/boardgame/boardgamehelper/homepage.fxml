@@ -14,13 +14,17 @@
          <Rectangle fx:id="menuBox" arcHeight="5.0" arcWidth="5.0" fill="#c3c9cf" height="374.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="189.0" />
          <VBox layoutY="60.0" prefHeight="339.0" prefWidth="176.0" styleClass="menu-box">
             <children>
+               <Text strokeType="OUTSIDE" styleClass="menu-header" strokeWidth="0.0" text="Account" />
+               <Button fx:id="login" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="Login" />
+               <Button fx:id="logout"  mnemonicParsing="false" onMouseClicked="#logout" styleClass="menu-button" text="Logout" />
+               <Button fx:id="register"  mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="Register" />
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-header" text="Assets" />
                <Button fx:id="viewAssets" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="View all" />
-               <Button fx:id="mapAdd" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="Add map" />
-               <Button fx:id="tokenAdd" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="Add Token" />
+               <Button fx:id="mapAdd" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="Add map" />
+               <Button fx:id="tokenAdd" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="Add Token" />
                <Button mnemonicParsing="false" styleClass="menu-button" text="Add Sheet" />
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-header" text="Play" />
-               <Button fx:id="launch" onMouseClicked="#setScene" mnemonicParsing="false" styleClass="menu-button" text="launch" />
+               <Button fx:id="launch" mnemonicParsing="false" onMouseClicked="#setScene" styleClass="menu-button" text="launch" />
                <Button mnemonicParsing="false" styleClass="menu-button" text="Join" />
             </children>
          </VBox>

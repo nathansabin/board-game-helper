@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.boardgame.boardgamehelper.models.metaData;
 import org.boardgame.boardgamehelper.utils.pageManager;
 
 public class homepageController {
@@ -15,6 +16,12 @@ public class homepageController {
     private Rectangle headerBox;
     @FXML
     private Rectangle menuBox;
+    @FXML
+    private Button login;
+    @FXML
+    private Button logout;
+    @FXML
+    private Button register;
     @FXML
     private Button mapAdd;
     @FXML
@@ -27,6 +34,7 @@ public class homepageController {
     private pageManager pageM = new pageManager();
 
     public void initialize() {
+        System.out.println(metaData.getInstance().getToken());
         headerBox.widthProperty().bind(headerRoot.widthProperty());
         menuBox.heightProperty().bind(headerRoot.heightProperty());
     }
@@ -45,10 +53,21 @@ public class homepageController {
                 pageM.changeScene("view.fxml", stage);
             } else if (sor == launch) {
                 pageM.changeScene("launch.fxml", stage);
+            } else if (sor == login) {
+                pageM.changeScene("login.fxml", stage);
+            } else if (sor == register) {
+                pageM.changeScene("register.fxml", stage);
             }
 
         } catch (Exception err) {
             err.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void logout(MouseEvent e) {
+        if (e.getSource() == logout) {
+            metaData.getInstance().setToken(null);
         }
     }
 }

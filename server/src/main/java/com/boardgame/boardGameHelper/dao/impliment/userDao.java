@@ -20,7 +20,8 @@ public class userDao implements userInterface {
     private final Connection DB = this.connection.getConn();
 
     @Override
-    public user createUser(user newUser) throws SQLException {
+    public String createUser(user newUser) throws SQLException {
+        Map<String, Object> claims = new HashMap<>();
 
         String query = "INSERT INTO user(username, password) VALUES(?, ?)";
         try (PreparedStatement stmt = this.DB.prepareStatement(query)) {
@@ -46,14 +47,18 @@ public class userDao implements userInterface {
             throw new RuntimeException(e);
         }
 
-        return newUser;
+        claims.put("username", newUser.getUsername());
+        claims.put("password", newUser.getPassword());
+        claims.put("id", newUser.getId());
+
+        return jwt.generateToken(claims);
     }
     @Override
     public String login(user User) {
 
         Map<String, Object> claims = new HashMap<>();
 
-        String query = "SELECT * FROM user WHERE username=? OR password=?";
+        String query = "SELECT * FROM user WHERE username=? AND password=?";
         try (PreparedStatement stmt = this.DB.prepareStatement(query)){
             stmt.setString(1, User.getUsername());
             stmt.setString(2, User.getPassword());
@@ -61,6 +66,9 @@ public class userDao implements userInterface {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+                if (rs.getString("username") == null){
+                    throw new RuntimeException();
+                }
                 claims.put("username", rs.getString("username"));
                 claims.put("password", rs.getString("password"));
                 claims.put("id", rs.getInt("id"));

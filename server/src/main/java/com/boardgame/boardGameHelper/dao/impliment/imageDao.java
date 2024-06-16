@@ -42,7 +42,7 @@ public class imageDao implements imageInterface {
         return new images();
     }
     @Override
-    public boolean addMap(String token, String image) throws IOException {
+    public boolean addImage(String token, String image, String type) throws IOException {
         try {
             byte[] bytes = Base64.decodeBase64(image);
             InputStream inputStream = new ByteArrayInputStream(bytes);
@@ -53,7 +53,7 @@ public class imageDao implements imageInterface {
 
             String imageQuery = "INSERT INTO image(imagetype, location, height, width) VALUES(?, ?, ?, ?)";
             try (PreparedStatement stmt = this.DB.prepareStatement(imageQuery, PreparedStatement.RETURN_GENERATED_KEYS)) {
-                stmt.setString(1, "map");
+                stmt.setString(1, type);
                 stmt.setString(2, "");
                 stmt.setInt(3, bImage.getWidth());
                 stmt.setInt(4, bImage.getHeight());
@@ -75,7 +75,7 @@ public class imageDao implements imageInterface {
                 stmt.execute();
             }
 
-            String path = "src/main/map" + imageId + ".png";
+            String path = "src/main/" + type + imageId + ".png";
             File location = new File(path);
 
             String locationUpdate = "UPDATE image SET location=? WHERE id=?";
@@ -89,12 +89,7 @@ public class imageDao implements imageInterface {
             return true;
         } catch (Exception e) {
             throw new IOException(e);
-//            return false;
         }
-    }
-    @Override
-    public boolean addToken() {
-        return false;
     }
     @Override
     public Image getOneMap () {

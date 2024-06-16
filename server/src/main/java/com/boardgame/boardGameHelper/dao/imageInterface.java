@@ -11,8 +11,7 @@ public interface imageInterface {
     public images getAllMaps();
 
     public images getAllToken();
-    public boolean addMap(String token, String image) throws IOException;
-    public boolean addToken();
+    public boolean addImage(String token, String image, String type) throws IOException;
     public Image getOneMap ();
     public Image getOneToken();
 

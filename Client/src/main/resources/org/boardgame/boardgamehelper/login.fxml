@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" minWidth="350.0" maxWidth="4000.0" prefWidth="600.0" stylesheets="/homepage.css, /account.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.boardgame.boardgamehelper.controllers.loginController">
+    <children>
+        <VBox prefHeight="600.0" prefWidth="600.0" styleClass="form-container" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="41.0" spacing="40.0" styleClass="header-con" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Board Game Helper" />
+                        <Button fx:id="homeButton" mnemonicParsing="false" onMouseClicked="#pageHandler" styleClass="headerButton" text="Home" />
+                    </children>
+                </HBox>
+                <VBox styleClass="form-box" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox styleClass="form-input">
+                            <children>
+                                <TextField styleClass="form-text" fx:id="username" promptText="Username" />
+                                <TextField styleClass="form-text" fx:id="password" promptText="Password" />
+                            </children>
+                        </VBox>
+                        <HBox styleClass="form-buttons">
+                            <children>
+                                <Button mnemonicParsing="false" onMouseClicked="#loginUser" styleClass="menu-button" text="Login" />
+                                <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#pageHandler" styleClass="menu-button" text="Register" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
