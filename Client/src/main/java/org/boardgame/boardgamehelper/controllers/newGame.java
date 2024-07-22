@@ -1,18 +1,24 @@
 package org.boardgame.boardgamehelper.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.boardgame.boardgamehelper.GUI.navView;
 import org.boardgame.boardgamehelper.utils.imageHandler;
+import org.boardgame.boardgamehelper.utils.jsonHandler;
 import org.boardgame.boardgamehelper.utils.pageManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class newGame {
     @FXML
@@ -25,19 +31,23 @@ public class newGame {
     private HBox savedTokens;
     @FXML
     private HBox savedRules;
+    @FXML
+    private TextField saveName;
 
     private pageManager pageM = new pageManager();
     private navView mapView = new navView();
     private navView tokenView = new navView();
     private navView ruleView = new navView();
+    private List<String> mapsArray = new ArrayList<>();
+    private List<String> tokensArray = new ArrayList<>();
 
     @FXML
     public void initialize() throws IOException, URISyntaxException {
         File[] maps = imageHandler.pullLocalImages("maps");
         File[] tokens = imageHandler.pullLocalImages("tokens");
 
-        HBox mapScroll = mapView.scrollview(maps);
-        HBox TokenScroll = tokenView.scrollview(tokens);
+        HBox mapScroll = mapView.scrollview(maps, "map");
+        HBox TokenScroll = tokenView.scrollview(tokens, "token");
 
         addImageEvents(mapScroll);
         addImageEvents(TokenScroll);
@@ -46,7 +56,6 @@ public class newGame {
 
         savedMaps.getChildren().add(mapScroll);
         savedTokens.getChildren().add(TokenScroll);
-
     }
 
     @FXML
@@ -59,16 +68,34 @@ public class newGame {
         }
     }
 
-    public void addImageEvents(HBox imageBox) {
+    @FXML
+    public void save(MouseEvent e) {
+        String staticMaps = mapsArray.toString();
+        String staticTokens = tokensArray.toString();
+        boolean worked = jsonHandler.writeJSON(saveName.getText(), staticTokens, staticMaps);
+        System.out.println(worked);
+    }
+
+    private void addImageEvents(HBox imageBox) {
         imageBox.getChildren().forEach((e) ->{
             e.addEventHandler(MouseEvent.MOUSE_CLICKED, (mouseEvent)-> {
-                var img = mouseEvent.getTarget();
-                System.out.println(mouseEvent.getTarget());
+                try {
+                    ImageView cur = (ImageView) mouseEvent.getTarget();
+                    String currentCat = getImageCategory(cur);
+                    String path = (String) cur.getUserData();
+
+
+                    if (currentCat == "token") {
+                        this.tokensArray.add(path);
+                    } else if (currentCat == "map") {
+                        this.mapsArray.add(path);
+                    }
+                } catch (Exception err) {}
                 mouseEvent.consume();
             });
         });
     }
-    public void arrowClickEvent(HBox nav) {
+    private void arrowClickEvent(HBox nav) {
         Button left = (Button) nav.getChildren().get(0);
         HBox images = (HBox) nav.getChildren().get(1);
         Button right = (Button) nav.getChildren().get(2);
@@ -83,4 +110,15 @@ public class newGame {
         }
         addImageEvents(images);
     }
+
+    private String getImageCategory(ImageView img) {
+        ObservableList<String> classes = img.getStyleClass();
+        if (classes.contains("token")) {
+            return "token";
+        } else if (classes.contains("map")) {
+            return "map";
+        }
+        return null;
+    }
+
 }

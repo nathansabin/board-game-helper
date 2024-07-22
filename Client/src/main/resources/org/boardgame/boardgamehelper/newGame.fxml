@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -85,7 +86,14 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cloud tokens" />
                            </children>
                         </VBox>
-                        <Button mnemonicParsing="false" styleClass="saved" text="Save" />
+                        <VBox >
+                           <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Save Name" />
+                        <TextField fx:id="saveName" text="Save Name" />
+                        <Button mnemonicParsing="false" onMouseClicked="#save" styleClass="saved" text="Save" />
+                           </children>
+                        </VBox>
+
                      </children>
                   </VBox>
                </children>

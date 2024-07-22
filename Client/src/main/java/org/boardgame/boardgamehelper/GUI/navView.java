@@ -13,17 +13,18 @@ public class navView {
     private HBox mapsComponent;
     private HashMap<Integer, File>  active = new HashMap<>();
     private Integer current;
+    private String cat;
 
-
-    public HBox scrollview(File[] imgFolder) throws IOException {
+    public HBox scrollview(File[] imgFolder, String category) throws IOException {
         this.mapsComponent = new HBox(10);
         images = imgFolder;
         this.current = 0;
+        this.cat = category;
 
         int mapLength = Math.min(imgFolder.length, 3);
         for (int i=0; i < mapLength; i++) {
             this.active.put(i, imgFolder[i]);
-            mapsComponent.getChildren().add(imageHandler.oneImage(images[i]));
+            mapsComponent.getChildren().add(imageHandler.oneImage(images[i], this.cat));
         }
 
         HBox scroll = new HBox(10);
@@ -34,6 +35,7 @@ public class navView {
         left.setOnMouseClicked(mouseEvent -> {
             try {
                 setLeft();
+                mouseEvent.consume();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -41,6 +43,7 @@ public class navView {
         right.setOnMouseClicked(mouseEvent -> {
             try {
                 setRight();
+                mouseEvent.consume();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -76,7 +79,7 @@ public class navView {
 
             current--;
             for (int i=current; i<current+3; i++) {
-                mapsComponent.getChildren().add(imageHandler.oneImage(images[i]));
+                mapsComponent.getChildren().add(imageHandler.oneImage(images[i], this.cat));
             }
 
         }
@@ -101,7 +104,7 @@ public class navView {
 
             current++;
             for (int i=current; i<current+3; i++) {
-                mapsComponent.getChildren().add(imageHandler.oneImage(images[i]));
+                mapsComponent.getChildren().add(imageHandler.oneImage(images[i], this.cat));
             }
         }
     }

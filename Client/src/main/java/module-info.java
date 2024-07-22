@@ -10,4 +10,5 @@ module org.boardgame.boardgamehelper {
     exports org.boardgame.boardgamehelper.controllers;
     opens org.boardgame.boardgamehelper.controllers to javafx.fxml;
     requires java.desktop;
+    requires json.simple;
 }

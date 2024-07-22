@@ -69,14 +69,16 @@ public class imageHandler {
         return gro;
     }
 
-    public static ImageView oneImage(File imgPath) throws IOException {
+    public static ImageView oneImage(File imgPath, String category) throws IOException {
         ImageView imgView = new ImageView();
         Image img = SwingFXUtils.toFXImage(ImageIO.read(imgPath), null);
 
         imgView.setImage(img);
         imgView.setFitWidth(60.0);
         imgView.setFitHeight(60.0);
+        imgView.getStyleClass().add(category);
         imgView.getStyleClass().add("image");
+        imgView.setUserData(imgPath.toString());
         return imgView;
     }
 
