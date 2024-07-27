@@ -6,9 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<ScrollPane
+            fx:id="root"
+            xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.boardgame.boardgamehelper.controllers.savedGames"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="org.boardgame.boardgamehelper.controllers.game"
+            prefHeight="950.0" prefWidth="800.0">
 
-</AnchorPane>
+</ScrollPane>

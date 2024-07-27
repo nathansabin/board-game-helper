@@ -1,51 +1,35 @@
 package org.boardgame.boardgamehelper.GUI;
 
-import javafx.scene.Group;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.boardgame.boardgamehelper.models.token;
 
-import java.io.File;
 import java.io.IOException;
-
+import java.util.List;
 
 public class grid {
-
-    private Image background;
+    private List<token> tokenState;
     private GridPane grid;
-    private static Group map;
 
-    public grid (Integer width, Integer height, String image) throws IOException {
-        map = new Group();
-        ScrollPane scroll = new ScrollPane();
+    public GridPane createGrid(Integer width, Integer height) throws IOException {
         grid = new GridPane();
-
-        for (Integer i = 0; i < height; i++) {
-            for (Integer j = 0; j < width; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 Rectangle rect = new Rectangle(50, 50);
                 rect.setFill(Color.TRANSPARENT);
-                rect.setStroke(Color.BLACK);
                 grid.add(rect, i, j);
             }
         }
 
-        if (image != "") {
-            File file = new File(image);
-//            background = SwingFXUtils.toFXImage(ImageIO.read(file));
-            ImageView view = new ImageView();
-            view.setImage(background);
-            view.setStyle("-fx-position: absolute; -fx-top: 0; -fx-left: 0;");
-
-            map.getChildren().add(view);
-        }
-        map.getChildren().add(scroll);
-        map.getChildren().add(grid);
-    }
-    public static Group getGrid() {
-        return map;
+        grid.setStyle("-fx-grid-lines-visible: true;");
+        return grid;
     }
 
+    public void putToken(token newToken) {
+        try {
+            // finish add token to map
+            this.tokenState.add(newToken);
+        } catch (Exception ignored) {}
+    }
 }

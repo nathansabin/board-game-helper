@@ -41,6 +41,7 @@ public class newGame {
     private List<String> mapsArray = new ArrayList<>();
     private List<String> tokensArray = new ArrayList<>();
 
+
     @FXML
     public void initialize() throws IOException, URISyntaxException {
         File[] maps = imageHandler.pullLocalImages("maps");
@@ -69,11 +70,16 @@ public class newGame {
     }
 
     @FXML
-    public void save(MouseEvent e) {
+    public void save(MouseEvent e) throws IOException {
         String staticMaps = mapsArray.toString();
         String staticTokens = tokensArray.toString();
         boolean worked = jsonHandler.writeJSON(saveName.getText(), staticTokens, staticMaps);
-        System.out.println(worked);
+
+        try {
+            Stage stage = (Stage) root.getScene().getWindow();
+            pageM.changeScene("game.fxml", stage);
+        } catch (Exception ignored) {// add warning indicator later
+             }
     }
 
     private void addImageEvents(HBox imageBox) {

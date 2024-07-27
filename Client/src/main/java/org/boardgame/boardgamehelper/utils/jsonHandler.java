@@ -19,6 +19,7 @@ public class jsonHandler {
 
         try {
             FileWriter file = new FileWriter("src/main/resources/saves/" + saveName + ".json");
+            metaData.getInstance().setSessionSettings(obj);
             file.write(obj.toJSONString());
 
             file.close();

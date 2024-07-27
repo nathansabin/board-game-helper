@@ -1,8 +1,11 @@
 package org.boardgame.boardgamehelper.models;
 
+import org.json.simple.JSONObject;
+
 public class metaData {
     private static metaData instance;
     private String token;
+    private JSONObject sessionSettings;
 
     private metaData(){}
 
@@ -18,6 +21,13 @@ public class metaData {
     }
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public JSONObject getSessionSettings() {
+        return this.sessionSettings;
+    }
+    public void setSessionSettings(JSONObject sessionSettings) {
+        this.sessionSettings = sessionSettings;
     }
 
     @Override
