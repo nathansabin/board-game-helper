@@ -71,9 +71,18 @@ public class newGame {
 
     @FXML
     public void save(MouseEvent e) throws IOException {
-        String staticMaps = mapsArray.toString();
-        String staticTokens = tokensArray.toString();
-        boolean worked = jsonHandler.writeJSON(saveName.getText(), staticTokens, staticMaps);
+        List<String> mapStrings = new ArrayList<>();
+        List<String> tokenStrings = new ArrayList<>();
+
+        mapsArray.forEach(ele-> {
+            mapStrings.add(ele.toString());
+        });
+        tokensArray.forEach(ele-> {
+            tokenStrings.add(ele.toString());
+        });
+
+
+        boolean worked = jsonHandler.writeJSON(saveName.getText(), tokenStrings, mapStrings);
 
         try {
             Stage stage = (Stage) root.getScene().getWindow();

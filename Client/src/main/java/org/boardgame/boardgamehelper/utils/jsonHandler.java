@@ -1,11 +1,13 @@
 package org.boardgame.boardgamehelper.utils;
+
 import org.boardgame.boardgamehelper.models.metaData;
 import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
+import java.util.List;
 
 public class jsonHandler {
-    public static Boolean writeJSON(String saveName, String tokens, String maps) {
+    public static Boolean writeJSON(String saveName, List<String> tokens, List<String> maps) {
         JSONObject obj = new JSONObject();
         boolean online = false;
         if (metaData.getInstance().getToken() != null) {
@@ -14,8 +16,8 @@ public class jsonHandler {
 
         obj.put("name", saveName);
         obj.put("online", online);
-        obj.put("tokens", tokens.toString());
-        obj.put("maps", maps.toString());
+        obj.put("tokens", tokens);
+        obj.put("maps", maps);
 
         try {
             FileWriter file = new FileWriter("src/main/resources/saves/" + saveName + ".json");
