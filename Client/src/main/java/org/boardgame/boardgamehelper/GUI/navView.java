@@ -83,7 +83,7 @@ public class navView {
 
         left.setOnMouseClicked(mouseEvent -> {
             try {
-                setLeft();
+                setLeftV();
                 mouseEvent.consume();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -91,7 +91,7 @@ public class navView {
         });
         right.setOnMouseClicked(mouseEvent -> {
             try {
-                setRight();
+                setRightV();
                 mouseEvent.consume();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -114,11 +114,9 @@ public class navView {
     public void setLeft() throws IOException {
         if (this.current <= 0) {
             System.out.println("cannot go further left");
-            return;
         }
         else if (images.length <= 3) {
             System.out.println("Not enough images");
-            return;
         }
         else {
             for (int i=0; i<2; i++) {
@@ -137,15 +135,11 @@ public class navView {
     public void setRight() throws IOException {
         if (this.current+3 >= images.length) {
             System.out.println("cannot go further right");
-            return;
         }
         else if (images.length <= 3) {
             System.out.println("Not enough images");
-            return;
         }
         else {
-            mapsComponent.getChildren().forEach(e->System.out.println(e));
-
             for (int i=0; i<2; i++) {
                 mapsComponent.getChildren().remove(i);
             }
@@ -156,5 +150,45 @@ public class navView {
                 mapsComponent.getChildren().add(imageHandler.oneImage(images[i], this.cat));
             }
         }
+    }
+
+    public void setLeftV() throws IOException {
+        if (this.current <= 0) {
+            System.out.println("cannot go further left");
+        }
+        else if (images.length <= 3) {
+            System.out.println("Not enough images");
+        }
+        else {
+            for (int i=0; i<2; i++) {
+                mapComponentV.getChildren().remove(i);
+            }
+            mapComponentV.getChildren().remove(0);
+
+            current--;
+            for (int i=current; i<current+3; i++) {
+                mapComponentV.getChildren().add(imageHandler.oneImage(images[i], this.cat));
+            }
+
+        }
+    }
+
+    public void setRightV() throws IOException {
+        if (this.current + 3 >= images.length) {
+            System.out.println("cannot go further right");
+        } else if (images.length <= 3) {
+            System.out.println("Not enough images");
+        } else {
+            for (int i = 0; i < 2; i++) {
+                mapComponentV.getChildren().remove(i);
+            }
+            mapComponentV.getChildren().remove(0);
+
+            current++;
+            for (int i = current; i < current + 3; i++) {
+                mapComponentV.getChildren().add(imageHandler.oneImage(images[i], this.cat));
+            }
+        }
+
     }
 }

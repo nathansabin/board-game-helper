@@ -30,9 +30,11 @@ public class newGame {
     @FXML
     private HBox savedTokens;
     @FXML
-    private HBox savedRules;
-    @FXML
     private TextField saveName;
+    @FXML
+    private VBox selectedLocalMaps;
+    @FXML
+    private VBox selectedLocalTokens;
 
     private pageManager pageM = new pageManager();
     private navView mapView = new navView();
@@ -83,7 +85,7 @@ public class newGame {
 
 
         boolean worked = jsonHandler.writeJSON(saveName.getText(), tokenStrings, mapStrings);
-
+        // TODO: if false create warning message
         try {
             Stage stage = (Stage) root.getScene().getWindow();
             pageM.changeScene("game.fxml", stage);
@@ -118,7 +120,6 @@ public class newGame {
 
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].addEventHandler(MouseEvent.MOUSE_CLICKED, (mouseEvent) -> {
-                System.out.println("Clicked: " + mouseEvent.getSource().toString());
                 addImageEvents(images);
                 mouseEvent.consume();
             });
