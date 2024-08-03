@@ -1,0 +1,28 @@
+.card-container {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+    -fx-alignment: center;
+    -fx-row-valignment: center;
+    -fx-column-halignment: center;
+}
+
+.card {
+    -fx-width: 1000px;
+    -fx-height: 125px;
+    -fx-padding: 5px 5px 10px 5px;
+    -fx-background-color: #a0a0a0;
+}
+
+.card:hover {
+    -fx-background-color: #c5c5c5;
+}
+
+.card-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+}
+
+.card-subtitle {
+    -fx-text-fill: #850101;
+    -fx-font-size: 16px;
+}

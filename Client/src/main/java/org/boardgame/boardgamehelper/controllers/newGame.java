@@ -3,6 +3,7 @@ package org.boardgame.boardgamehelper.controllers;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +30,8 @@ public class newGame {
     private HBox savedMaps;
     @FXML
     private HBox savedTokens;
+    @FXML
+    public TextArea description;
     @FXML
     private TextField saveName;
     @FXML
@@ -84,7 +87,7 @@ public class newGame {
         });
 
 
-        boolean worked = jsonHandler.writeJSON(saveName.getText(), tokenStrings, mapStrings);
+        boolean worked = jsonHandler.writeJSON(saveName.getText(), description.getText(), tokenStrings, mapStrings);
         // TODO: if false create warning message
         try {
             Stage stage = (Stage) root.getScene().getWindow();
