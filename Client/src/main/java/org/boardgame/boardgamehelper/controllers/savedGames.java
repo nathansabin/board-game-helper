@@ -33,7 +33,9 @@ public class savedGames {
 
         for (int i=0; i< allSaves.size(); i++) {
             Pane card = createCard(allSaves.get(i), i);
-            card.setId(String.valueOf(i));
+            String idString = String.valueOf(i);
+
+            card.setId(idString);
 
             card.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseClick-> {
                 Node tar = (Node) mouseClick.getTarget();

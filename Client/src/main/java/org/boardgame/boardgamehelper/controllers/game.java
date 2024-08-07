@@ -1,12 +1,17 @@
 package org.boardgame.boardgamehelper.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -36,12 +41,12 @@ public class game {
 
     @FXML
     public void  initialize() throws IOException {
-        this.gridState = new grid();
+        gridState = new grid();
         sessionSettings = metaData.getInstance().getSessionSettings();
-        this.gridMap = gridState.createGrid(10, 10);
+        gridMap = gridState.createGrid(10, 10);
         Pane menu = menuComponent();
 
-        this.base = new AnchorPane();
+        base = new AnchorPane();
 
         base.getChildren().add(gridMap);
         base.getChildren().add(backGround);
@@ -65,7 +70,8 @@ public class game {
         Button viewMenu = new Button("menu");
         VBox menuArea = new VBox();
         Label sizeInputLabel = new Label("Enter size");
-        this.sizeInput = new TextField();
+        sizeInput = new TextField("400");
+        arrowsSetDragable(tokens);
 
         menuArea.getChildren().add(new Label("Maps"));
         mapArrowClickEvent(maps);
@@ -102,8 +108,7 @@ public class game {
             imageContainers.add(new File((String)imgs.get(i)));
         }
 
-        VBox con =  nav.scrollviewVert(imageContainers.toArray(new File[0]), "maps");
-        return con;
+        return nav.scrollviewVert(imageContainers.toArray(new File[0]), "maps");
     }
 
     private void mapArrowClickEvent(VBox mapContainer) {
@@ -129,6 +134,7 @@ public class game {
         images.getChildren().forEach(e-> {
             e.addEventHandler(MouseEvent.MOUSE_CLICKED, imageEvent ->{
                 try {
+                    // error here
                     addMapImageEvent((ImageView) e);
                 } catch (IOException ignored) {}
                 imageEvent.consume();
@@ -137,20 +143,58 @@ public class game {
     }
 
     private void addMapImageEvent(ImageView target) throws IOException {
-        Integer newsize = Integer.parseInt(sizeInput.getText());
-        newsize = newsize - (newsize % 50);
-        mapWidth = Math.max(400, newsize);
+        Integer parsedSize;
+
+        try {
+            parsedSize= Integer.parseInt(sizeInput.getText());
+        } catch(Exception ignored) {
+            parsedSize = 400;
+        }
+
+        Integer newSize = parsedSize - (parsedSize % 50);
+        mapWidth = Math.max(400, newSize);
 
         backGround.setImage(target.getImage());
         backGround.setPreserveRatio(true);
         backGround.setFitWidth(mapWidth);
 
-        Integer newGridWidth = (int) Math.round(backGround.getFitWidth()/50);
-        Integer newGridHeight = (int) Math.round(backGround.getBoundsInLocal().getHeight()/50);
+        Integer width = (int) Math.round(backGround.getFitWidth()/50);
+        Integer height = (int) Math.round(backGround.getBoundsInLocal().getHeight()/50);
 
-        this.base.getChildren().remove(gridMap);
-        this.gridMap = gridState.createGrid(newGridHeight, newGridWidth);
+        base.getChildren().remove(gridMap);
+        gridMap = gridState.createGrid(height, width);
         base.getChildren().add(gridMap);
         gridMap.toFront();
+    }
+
+    private void arrowsSetDragable(VBox container){
+        ObservableList children = container.getChildren();
+        Button[] buttons = {(Button) children.get(0), (Button) children.get(2)};
+        VBox images = (VBox) children.get(1);
+
+        for (int i=0; i<buttons.length; i++){
+            buttons[i].addEventHandler(MouseEvent.MOUSE_CLICKED, MouseEvent -> {
+                setAllDragable(images);
+            });
+        }
+        setAllDragable(images);
+    }
+    private void setAllDragable(VBox imageCon){
+        imageCon.getChildren().forEach(child -> {
+            addTokenDrag((ImageView) child);
+        });
+    }
+    private void addTokenDrag(ImageView tar) {
+        tar.setOnDragDetected(event -> {
+            Image img = tar.getImage();
+
+            Dragboard db = tar.startDragAndDrop(TransferMode.ANY);
+
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(img);
+            db.setContent(content);
+
+            event.consume();
+        });
     }
 }
