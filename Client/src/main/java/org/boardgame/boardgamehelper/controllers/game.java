@@ -187,7 +187,6 @@ public class game {
     private void addTokenDrag(ImageView tar) {
         tar.setOnDragDetected(event -> {
             Image img = tar.getImage();
-
             Dragboard db = tar.startDragAndDrop(TransferMode.ANY);
 
             ClipboardContent content = new ClipboardContent();

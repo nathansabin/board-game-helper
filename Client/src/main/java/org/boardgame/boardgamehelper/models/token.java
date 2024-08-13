@@ -1,30 +1,30 @@
 package org.boardgame.boardgamehelper.models;
 
-import java.io.File;
+import javafx.scene.image.ImageView;
 
 public class token {
-    private File image;
+    private ImageView image;
     private Integer xCord;
     private Integer yCord;
     private char size;
 
-    token(File image, Integer xCord, Integer yCord) {
+    public token(ImageView image, Integer xCord, Integer yCord) {
         this.image = image;
         this.xCord = xCord;
         this.yCord = yCord;
         this.size = 'n';
     }
-    token(File image, Integer xCord, Integer yCord, char size) {
+    public token(ImageView image, Integer xCord, Integer yCord, char size) {
         this.image = image;
         this.xCord = xCord;
         this.yCord = yCord;
         this.size = size;
     }
 
-    public File getImage() {
+    public ImageView getImage() {
         return image;
     }
-    public void setImage(File image) {
+    public void setImage(ImageView image) {
         this.image = image;
     }
     public Integer getXCord() {

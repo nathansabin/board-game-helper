@@ -8,6 +8,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -71,7 +73,8 @@ public class imageHandler {
 
     public static ImageView oneImage(File imgPath, String category) throws IOException {
         ImageView imgView = new ImageView();
-        Image img = SwingFXUtils.toFXImage(ImageIO.read(imgPath), null);
+        Image img = SwingFXUtils.toFXImage(loadAndResizeImage(imgPath.getPath(), 80, 80), null);
+
 
         imgView.setImage(img);
         imgView.setFitWidth(60.0);
@@ -82,4 +85,24 @@ public class imageHandler {
         return imgView;
     }
 
+    private static BufferedImage loadAndResizeImage(String filePath, int width, int height) {
+        BufferedImage originalImage = null;
+        try {
+            // Load the image
+            originalImage = ImageIO.read(new File(filePath));
+
+            // Create a new BufferedImage with the desired dimensions
+            BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+            // Draw the original image onto the new BufferedImage, resizing it
+            Graphics2D g = resizedImage.createGraphics();
+            g.drawImage(originalImage, 0, 0, width, height, null);
+            g.dispose();
+
+            return resizedImage;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
